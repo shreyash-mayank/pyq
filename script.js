@@ -46,35 +46,14 @@ window.openPaper = async function (filePath, targetWindow) {
 
     const bucket = window.SUPABASE_STORAGE_BUCKET || "question-papers";
     const storage = activeClient.storage.from(bucket);
-    let resolvedPath = filePath;
-    let { data, error } = await storage.createSignedUrl(resolvedPath, 300);
+    const { data, error } = await storage.createSignedUrl(filePath, 300);
 
     if (error) {
-        const { data: objects, error: listError } = await storage.list("", {
-            limit: 100,
-        });
-        const pdfs = (objects || []).filter((object) =>
-            object.name.toLowerCase().endsWith(".pdf")
+        console.error("Storage error:", error.message);
+        throw new Error(
+            `Supabase could not create a signed URL for "${filePath}" in "${bucket}": ${error.message}. ` +
+            `If the file is visible in the dashboard, check that this site uses the same Supabase project and that Storage has a SELECT policy for this bucket.`
         );
-        const exactMatch = pdfs.find((object) => object.name === filePath);
-        const candidate =
-            exactMatch || (pdfs.length === 1 ? pdfs[0] : null);
-
-        if (listError || !candidate) {
-            const detail = listError
-                ? `${error.message} (Could not list bucket files: ${listError.message})`
-                : pdfs.length > 1
-                    ? `Found multiple PDFs in "${bucket}". Set SUPABASE_PAPER_PATH to the correct file path.`
-                    : `File "${filePath}" was not found in bucket "${bucket}". Upload it there or set SUPABASE_PAPER_PATH to its exact name.`;
-            throw new Error(detail);
-        }
-
-        resolvedPath = candidate.name;
-        ({ data, error } = await storage.createSignedUrl(resolvedPath, 300));
-        if (error) {
-            console.error("Storage error:", error.message);
-            throw error;
-        }
     }
 
     const pdfUrl = data?.signedUrl;
