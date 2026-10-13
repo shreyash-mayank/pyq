@@ -1,3 +1,677 @@
-p{
-    color: red;
+
+/* =========================
+   1. GLOBAL STYLES
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --primary-light: #eef2ff;
+
+    --background: #f8fafc;
+    --surface: #ffffff;
+
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+
+    --border: #e2e8f0;
+
+    --radius: 12px;
+    --transition: 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+::selection {
+    background: #c7d2fe;
+    color: #1e1b4b;
+}
+
+
+/* =========================
+   2. NAVIGATION BAR
+========================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 18px 8%;
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navbar nav a {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.navbar nav a:hover {
+    color: var(--primary);
+}
+
+.nav-btn {
+    padding: 10px 17px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background var(--transition),
+                transform var(--transition);
+}
+
+.nav-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   3. HERO SECTION
+========================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 105px 8% 85px;
+
+    background:
+        radial-gradient(
+            ellipse at 85% 15%,
+            rgba(199, 210, 254, 0.45),
+            transparent 42%
+        ),
+        linear-gradient(135deg, #ffffff, #f1f5ff);
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.tagline {
+    margin-bottom: 16px;
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin-bottom: 22px;
+    font-size: clamp(42px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -2.8px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-text {
+    max-width: 570px;
+    margin-bottom: 30px;
+
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 14px 22px;
+    border: 1px solid var(--primary);
+    border-radius: 9px;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: background var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
+}
+
+.primary-btn:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.18);
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   4. HERO STATISTICS
+========================= */
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid #dbe2f0;
+}
+
+.stats h3 {
+    margin-bottom: 3px;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+}
+
+.stats p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+
+/* =========================
+   5. COMMON SECTIONS
+========================= */
+
+.subjects,
+.papers {
+    padding: 85px 8%;
+}
+
+.section-heading {
+    max-width: 600px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+.section-heading .tagline {
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    margin-bottom: 10px;
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -1.2px;
+}
+
+.section-heading > p:last-child {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+
+/* =========================
+   6. SUBJECT CARDS
+========================= */
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.subject-card {
+    display: block;
+    padding: 26px 22px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+
+    transition: border-color var(--transition),
+                box-shadow var(--transition),
+                transform var(--transition);
+}
+
+.subject-card:hover {
+    border-color: #c7d2fe;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+    transform: translateY(-4px);
+}
+
+.subject-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+    background: var(--primary-light);
+    font-size: 25px;
+}
+
+.subject-card h3 {
+    margin-bottom: 6px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.subject-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   7. QUESTION PAPERS SECTION
+========================= */
+
+.papers {
+    background: #f1f5f9;
+}
+
+.papers .section-heading {
+    margin-bottom: 32px;
+}
+
+
+/* Search and year filter */
+
+.search-box {
+    display: flex;
+    gap: 12px;
+
+    max-width: 760px;
+    margin: 0 auto 35px;
+}
+
+.search-box input,
+.search-box select {
+    min-height: 48px;
+    padding: 12px 15px;
+
+    border: 1px solid #dbe2ea;
+    border-radius: 9px;
+    outline: none;
+
+    background: white;
+    color: var(--text-primary);
+    font-size: 13px;
+
+    transition: border-color var(--transition),
+                box-shadow var(--transition);
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-box input::placeholder {
+    color: #94a3b8;
+}
+
+.search-box select {
+    min-width: 135px;
+    cursor: pointer;
+}
+
+.search-box input:focus,
+.search-box select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+
+/* =========================
+   8. PAPER CARDS
+========================= */
+
+.paper-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.paper-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    padding: 24px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+
+    transition: border-color var(--transition),
+                box-shadow var(--transition),
+                transform var(--transition);
+}
+
+.paper-card:hover {
+    border-color: #c7d2fe;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+    transform: translateY(-3px);
+}
+
+.paper-label {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 5px 9px;
+
+    border-radius: 5px;
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.paper-card h3 {
+    margin-bottom: 7px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.paper-card > p {
+    margin-bottom: 18px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.paper-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 20px;
+    padding-top: 15px;
+
+    border-top: 1px solid #f1f5f9;
+
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+
+/* View paper link */
+
+.download-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+
+    border: 1px solid #c7d2fe;
+    border-radius: 7px;
+
+    color: var(--primary);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: background var(--transition),
+                color var(--transition),
+                border-color var(--transition);
+}
+
+.download-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+}
+
+
+/* No search results */
+
+#noResults {
+    margin-top: 30px;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* =========================
+   9. FOOTER
+========================= */
+
+footer {
+    padding: 42px 8%;
+    border-top: 1px solid var(--border);
+    background: white;
+    text-align: center;
+}
+
+footer .logo {
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+footer .copyright {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 11px;
+}
+
+
+/* =========================
+   10. ACCESSIBILITY
+========================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   11. TABLET RESPONSIVENESS
+========================= */
+
+@media (max-width: 1000px) {
+    .navbar {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .hero,
+    .subjects,
+    .papers {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .subject-grid,
+    .paper-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .navbar nav {
+        gap: 18px;
+    }
+}
+
+
+/* =========================
+   12. MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 600px) {
+    .navbar {
+        gap: 14px;
+        flex-wrap: wrap;
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .nav-btn {
+        padding: 9px 12px;
+        font-size: 11px;
+    }
+
+    .navbar nav {
+        order: 3;
+        justify-content: space-between;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding-top: 70px;
+        padding-bottom: 55px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+        letter-spacing: -1.8px;
+    }
+
+    .hero-text {
+        font-size: 14px;
+    }
+
+    .stats {
+        gap: 25px;
+        margin-top: 35px;
+        padding-top: 22px;
+    }
+
+    .stats h3 {
+        font-size: 21px;
+    }
+
+    .stats p {
+        font-size: 11px;
+    }
+
+    .subjects,
+    .papers {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .section-heading {
+        margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+    .subject-grid,
+    .paper-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .subject-card,
+    .paper-card {
+        padding: 22px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-box select {
+        width: 100%;
+    }
+
+    footer {
+        padding: 35px 5%;
+    }
+}
+
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
