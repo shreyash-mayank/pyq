@@ -34,7 +34,7 @@ async function findPapers(exam, year = "", subject = "") {
     return data || [];
 }
 
-window.openPaper = async function (filePath) {
+window.openPaper = async function (filePath, targetWindow) {
     const activeClient = window.supabaseClient;
     if (!activeClient) {
         throw new Error("Supabase is not configured.");
@@ -44,13 +44,37 @@ window.openPaper = async function (filePath) {
         throw new Error("No file path was provided for the PDF.");
     }
 
-    const { data, error } = await activeClient.storage
-        .from("question-papers")
-        .createSignedUrl(filePath, 300);
+    const bucket = window.SUPABASE_STORAGE_BUCKET || "question-papers";
+    const storage = activeClient.storage.from(bucket);
+    let resolvedPath = filePath;
+    let { data, error } = await storage.createSignedUrl(resolvedPath, 300);
 
     if (error) {
-        console.error("Storage error:", error.message);
-        throw error;
+        const { data: objects, error: listError } = await storage.list("", {
+            limit: 100,
+        });
+        const pdfs = (objects || []).filter((object) =>
+            object.name.toLowerCase().endsWith(".pdf")
+        );
+        const exactMatch = pdfs.find((object) => object.name === filePath);
+        const candidate =
+            exactMatch || (pdfs.length === 1 ? pdfs[0] : null);
+
+        if (listError || !candidate) {
+            const detail = listError
+                ? `${error.message} (Could not list bucket files: ${listError.message})`
+                : pdfs.length > 1
+                    ? `Found multiple PDFs in "${bucket}". Set SUPABASE_PAPER_PATH to the correct file path.`
+                    : `File "${filePath}" was not found in bucket "${bucket}". Upload it there or set SUPABASE_PAPER_PATH to its exact name.`;
+            throw new Error(detail);
+        }
+
+        resolvedPath = candidate.name;
+        ({ data, error } = await storage.createSignedUrl(resolvedPath, 300));
+        if (error) {
+            console.error("Storage error:", error.message);
+            throw error;
+        }
     }
 
     const pdfUrl = data?.signedUrl;
@@ -58,9 +82,9 @@ window.openPaper = async function (filePath) {
         throw new Error("Supabase did not return a signed PDF URL.");
     }
 
-    const newWindow = window.open(pdfUrl, "_blank", "noopener,noreferrer");
-
-    if (!newWindow) {
+    if (targetWindow && !targetWindow.closed) {
+        targetWindow.location.href = pdfUrl;
+    } else {
         window.location.href = pdfUrl;
     }
 
