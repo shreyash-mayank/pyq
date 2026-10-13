@@ -50,9 +50,6 @@ window.openPaper = async function (filePath) {
 
     if (error) {
         console.error("Storage error:", error.message);
-        alert(
-            "Could not open the PDF. Check the bucket, file path, and Storage permissions."
-        );
         throw error;
     }
 
