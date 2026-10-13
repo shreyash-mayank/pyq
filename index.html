@@ -4,462 +4,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PrepSpace | Your Exam Preparation Hub</title>
-    <meta name="description" content="Explore entrance exams, previous year papers, study resources and exam preparation materials.">
-
+    <title>PrepSpace | Exam Preparation</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Navigation -->
     <header class="navbar">
         <a href="#home" class="logo">prep<span>space.</span></a>
 
         <nav class="nav-links">
             <a href="#home">Home</a>
             <a href="#exams">Explore Exams</a>
+            <a href="#jee-pyq">JEE PYQ</a>
             <a href="#resources">Resources</a>
             <a href="#about">About</a>
         </nav>
 
-        <a href="#exams" class="nav-button">Get Started <span>↗</span></a>
+        <a href="#jee-pyq" class="nav-button">View JEE PYQ ↗</a>
     </header>
 
-
-    <!-- Hero Section -->
     <main>
+        <!-- Hero -->
         <section class="hero" id="home">
-
             <div class="hero-content">
-                <div class="announcement">
-                    <span class="status-dot"></span>
-                    YOUR NEXT CHAPTER STARTS HERE
-                </div>
+                <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
 
-                <h1>
-                    One platform.<br>
+                <h1>One platform.<br>
                     <span>Every big ambition.</span>
                 </h1>
 
-                <p class="hero-description">
-                    From JEE and NEET to UPSC, GMAT and GATE.
-                    Find previous year papers, explore exam resources,
-                    and prepare for your next big opportunity.
+                <p>
+                    Find previous year question papers and prepare
+                    for your next big opportunity. Start with JEE PYQ
+                    on PrepSpace.
                 </p>
 
                 <div class="hero-actions">
-                    <a href="#exams" class="primary-button">
-                        Explore examinations <span>→</span>
+                    <a href="#jee-pyq" class="primary-button">
+                        Explore JEE PYQ →
                     </a>
-
-                    <a href="#resources" class="secondary-button">
-                        Discover resources
+                    <a href="#exams" class="secondary-button">
+                        Explore examinations
                     </a>
-                </div>
-
-                <div class="hero-trust">
-                    <div class="trust-icon">✓</div>
-                    <p>A focused space for your exam preparation</p>
                 </div>
             </div>
 
             <div class="hero-visual">
-                <div class="visual-glow"></div>
-
-                <div class="study-card main-study-card">
-                    <div class="study-card-top">
-                        <div class="book-icon">✳</div>
-                        <span class="card-status">YOUR NEXT GOAL</span>
-                    </div>
-
-                    <p class="visual-label">START PREPARING FOR</p>
+                <div class="study-card">
+                    <div class="book-icon">📚</div>
+                    <span class="eyebrow">YOUR NEXT GOAL</span>
                     <h2>Your dream exam.</h2>
-                    <p class="visual-description">
-                        The right resources can make your preparation
-                        more focused.
+                    <p>
+                        Find your paper, practise consistently,
+                        and keep moving forward.
                     </p>
 
-                    <div class="mini-exams">
+                    <div class="exam-tags">
                         <span>JEE</span>
                         <span>NEET</span>
                         <span>UPSC</span>
                         <span>GATE</span>
                     </div>
 
-                    <a href="#exams" class="visual-link">
-                        Find your exam <span>↗</span>
-                    </a>
-                </div>
-
-                <div class="floating-card floating-card-top">
-                    <span class="floating-icon">📚</span>
-                    <div>
-                        <strong>Previous year papers</strong>
-                        <p>Practice with purpose</p>
-                    </div>
-                </div>
-
-                <div class="floating-card floating-card-bottom">
-                    <span class="floating-icon green-icon">◎</span>
-                    <div>
-                        <strong>Your preparation</strong>
-                        <p>One step at a time</p>
-                    </div>
+                    <a href="#jee-pyq">Find JEE PYQ ↗</a>
                 </div>
             </div>
-
         </section>
 
-
-        <!-- Quick Categories -->
+        <!-- Exam categories -->
         <section class="quick-section">
-            <div class="quick-heading">
-                <span class="section-eyebrow">FIND YOUR DIRECTION</span>
+            <div class="section-heading">
+                <span class="eyebrow">FIND YOUR DIRECTION</span>
                 <h2>What are you preparing for?</h2>
             </div>
 
-            <div class="quick-categories">
-                <a href="#exams" class="quick-category" data-category="engineering">
-                    <span class="category-symbol purple">∑</span>
-                    <span>Engineering</span>
-                    <span class="category-arrow">↗</span>
-                </a>
-
-                <a href="#exams" class="quick-category" data-category="medical">
-                    <span class="category-symbol orange">✚</span>
-                    <span>Medical</span>
-                    <span class="category-arrow">↗</span>
-                </a>
-
-                <a href="#exams" class="quick-category" data-category="government">
-                    <span class="category-symbol blue">▤</span>
-                    <span>Government</span>
-                    <span class="category-arrow">↗</span>
-                </a>
-
-                <a href="#exams" class="quick-category" data-category="management">
-                    <span class="category-symbol green">↗</span>
-                    <span>Management</span>
-                    <span class="category-arrow">↗</span>
-                </a>
+            <div class="category-grid">
+                <a href="#exams">∑ Engineering</a>
+                <a href="#exams">✚ Medical</a>
+                <a href="#exams">▤ Government</a>
+                <a href="#exams">↗ Management</a>
             </div>
         </section>
-
 
         <!-- Exams -->
         <section class="exams-section" id="exams">
-
-            <div class="section-header">
-                <div>
-                    <span class="section-eyebrow">EXPLORE OPPORTUNITIES</span>
-                    <h2>Find your examination.</h2>
-                    <p>Everything starts with choosing your next goal.</p>
-                </div>
-
-                <div class="exam-search">
-                    <span>⌕</span>
-                    <input
-                        type="search"
-                        id="examSearch"
-                        placeholder="Search JEE, UPSC, GMAT..."
-                        aria-label="Search examinations"
-                    >
-                </div>
+            <div class="section-heading">
+                <span class="eyebrow">EXPLORE OPPORTUNITIES</span>
+                <h2>Find your examination.</h2>
+                <p>Choose an exam to explore its resources.</p>
             </div>
 
+            <input
+                type="search"
+                id="examSearch"
+                class="search-input"
+                placeholder="Search JEE, UPSC, GATE..."
+                aria-label="Search examinations"
+            >
+
             <div class="filter-tabs">
-                <button class="filter-button active" data-filter="all">All exams</button>
-                <button class="filter-button" data-filter="engineering">Engineering</button>
-                <button class="filter-button" data-filter="medical">Medical</button>
-                <button class="filter-button" data-filter="government">Government</button>
-                <button class="filter-button" data-filter="management">Management</button>
+                <button class="filter-button active" data-filter="all">
+                    All exams
+                </button>
+                <button class="filter-button" data-filter="engineering">
+                    Engineering
+                </button>
+                <button class="filter-button" data-filter="medical">
+                    Medical
+                </button>
+                <button class="filter-button" data-filter="government">
+                    Government
+                </button>
+                <button class="filter-button" data-filter="management">
+                    Management
+                </button>
             </div>
 
             <div class="exam-grid" id="examGrid">
-
-                <!-- JEE -->
                 <article class="exam-card" data-category="engineering">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-purple">∑</div>
-                        <span class="exam-type">ENGINEERING</span>
-                    </div>
                     <h3>JEE Main</h3>
-                    <p class="exam-full-name">Joint Entrance Examination</p>
-                    <p class="exam-description">
-                        Prepare for engineering admissions with
-                        practice papers and subject-wise resources.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Previous papers</span>
-                        <span>Practice</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Joint Entrance Examination</p>
+                    <p>Practise using previous year question papers.</p>
+                    <a href="#jee-pyq">View JEE PYQ →</a>
                 </article>
 
-                <!-- JEE Advanced -->
                 <article class="exam-card" data-category="engineering">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-indigo">⌘</div>
-                        <span class="exam-type">ENGINEERING</span>
-                    </div>
                     <h3>JEE Advanced</h3>
-                    <p class="exam-full-name">Advanced Engineering Entrance</p>
-                    <p class="exam-description">
-                        Access previous papers and resources for
-                        advanced-level problem solving.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Previous papers</span>
-                        <span>Physics</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Advanced Engineering Entrance</p>
+                    <p>Prepare for advanced-level problem solving.</p>
+                    <a href="#jee-pyq">Explore resources →</a>
                 </article>
 
-                <!-- NEET -->
                 <article class="exam-card" data-category="medical">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-orange">✚</div>
-                        <span class="exam-type">MEDICAL</span>
-                    </div>
                     <h3>NEET UG</h3>
-                    <p class="exam-full-name">National Eligibility cum Entrance Test</p>
-                    <p class="exam-description">
-                        Study Biology, Chemistry and Physics with
-                        exam-oriented practice material.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Biology</span>
-                        <span>Mock practice</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Medical Entrance Examination</p>
+                    <p>Practise Biology, Chemistry and Physics.</p>
+                    <a href="#resources">Explore resources →</a>
                 </article>
 
-                <!-- UPSC -->
                 <article class="exam-card" data-category="government">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-blue">▤</div>
-                        <span class="exam-type">CIVIL SERVICES</span>
-                    </div>
                     <h3>UPSC CSE</h3>
-                    <p class="exam-full-name">Civil Services Examination</p>
-                    <p class="exam-description">
-                        Organise your preparation with previous papers
-                        for Prelims and Mains.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Prelims</span>
-                        <span>Mains</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Civil Services Examination</p>
+                    <p>Organise your Prelims and Mains preparation.</p>
+                    <a href="#resources">Explore resources →</a>
                 </article>
 
-                <!-- GATE -->
                 <article class="exam-card" data-category="engineering">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-green">⌬</div>
-                        <span class="exam-type">POSTGRADUATE</span>
-                    </div>
                     <h3>GATE</h3>
-                    <p class="exam-full-name">Graduate Aptitude Test in Engineering</p>
-                    <p class="exam-description">
-                        Find subject-specific papers and practice
-                        technical concepts for GATE.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Core subjects</span>
-                        <span>Numericals</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Graduate Aptitude Test in Engineering</p>
+                    <p>Practise technical concepts and numericals.</p>
+                    <a href="#resources">Explore resources →</a>
                 </article>
 
-                <!-- CAT -->
                 <article class="exam-card" data-category="management">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-pink">↗</div>
-                        <span class="exam-type">MANAGEMENT</span>
-                    </div>
                     <h3>CAT</h3>
-                    <p class="exam-full-name">Common Admission Test</p>
-                    <p class="exam-description">
-                        Prepare for management admissions with
-                        aptitude questions and practice material.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Quantitative</span>
-                        <span>Verbal</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Common Admission Test</p>
+                    <p>Prepare for management admissions.</p>
+                    <a href="#resources">Explore resources →</a>
                 </article>
 
-                <!-- GMAT -->
                 <article class="exam-card" data-category="management">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-blue">◎</div>
-                        <span class="exam-type">GLOBAL MANAGEMENT</span>
-                    </div>
                     <h3>GMAT</h3>
-                    <p class="exam-full-name">Graduate Management Admission Test</p>
-                    <p class="exam-description">
-                        Explore preparation material for business
-                        school admissions around the world.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Quantitative</span>
-                        <span>Verbal</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Graduate Management Admission Test</p>
+                    <p>Explore business school preparation resources.</p>
+                    <a href="#resources">Explore resources →</a>
                 </article>
 
-                <!-- CUET -->
                 <article class="exam-card" data-category="government">
-                    <div class="exam-card-top">
-                        <div class="exam-icon icon-yellow">✳</div>
-                        <span class="exam-type">UNIVERSITY ENTRANCE</span>
-                    </div>
                     <h3>CUET UG</h3>
-                    <p class="exam-full-name">Common University Entrance Test</p>
-                    <p class="exam-description">
-                        Discover subject-wise preparation resources
-                        for undergraduate university admissions.
-                    </p>
-                    <div class="exam-tags">
-                        <span>Subject papers</span>
-                        <span>Practice</span>
-                    </div>
-                    <a href="#resources" class="exam-link">
-                        Explore resources <span>→</span>
-                    </a>
+                    <p>Common University Entrance Test</p>
+                    <p>Prepare for university admissions.</p>
+                    <a href="#resources">Explore resources →</a>
                 </article>
-
-                <!-- No results -->
-                <p class="no-results" id="noResults" hidden>
-                    No matching examinations found. Try another search.
-                </p>
-
             </div>
+
+            <p id="noResults" hidden>
+                No matching examinations found.
+            </p>
         </section>
 
-
-        <!-- Resources -->
-        <section class="resources-section" id="resources">
-            <div class="resource-heading">
-                <span class="section-eyebrow">YOUR PREPARATION TOOLKIT</span>
-                <h2>Study with a clear direction.</h2>
-                <p>Build a preparation routine with the right resources.</p>
+        <!-- JEE PYQ -->
+        <section class="resources-section" id="jee-pyq">
+            <div class="section-heading">
+                <span class="eyebrow">PRACTICE MATERIAL</span>
+                <h2>JEE Previous Year Questions</h2>
+                <p>Your uploaded question paper is available below.</p>
             </div>
 
             <div class="resource-grid">
+                <article class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h3>JEE PYQ — PDF</h3>
+                    <p>
+                        Open the question paper stored in
+                        Supabase Storage.
+                    </p>
 
-                <a href="#exams" class="resource-card">
-                    <div class="resource-icon">▤</div>
+                    <button
+                        type="button"
+                        id="viewPyqButton"
+                        class="primary-button">
+                        View Paper →
+                    </button>
+
+                    <p id="paperStatus" role="status"></p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Resources -->
+        <section class="resources-section" id="resources">
+            <div class="section-heading">
+                <span class="eyebrow">YOUR PREPARATION TOOLKIT</span>
+                <h2>Study with direction.</h2>
+            </div>
+
+            <div class="resource-grid">
+                <article class="resource-card">
+                    <div class="resource-icon">📄</div>
                     <h3>Previous Year Papers</h3>
-                    <p>
-                        Understand question patterns and practise
-                        using past examination papers.
-                    </p>
-                    <span class="resource-link">Browse papers →</span>
-                </a>
+                    <p>Understand question patterns and practise.</p>
+                    <a href="#jee-pyq">Browse papers →</a>
+                </article>
 
-                <a href="#exams" class="resource-card">
-                    <div class="resource-icon">✎</div>
+                <article class="resource-card">
+                    <div class="resource-icon">✏️</div>
                     <h3>Practice Questions</h3>
-                    <p>
-                        Strengthen your understanding through
-                        focused subject-wise practice.
-                    </p>
-                    <span class="resource-link">Start practising →</span>
-                </a>
+                    <p>Strengthen your understanding with practice.</p>
+                    <a href="#exams">Explore exams →</a>
+                </article>
 
-                <a href="#exams" class="resource-card">
-                    <div class="resource-icon">◷</div>
+                <article class="resource-card">
+                    <div class="resource-icon">🕒</div>
                     <h3>Study Planning</h3>
-                    <p>
-                        Organise your subjects and build a
-                        consistent preparation schedule.
-                    </p>
-                    <span class="resource-link">Plan your study →</span>
-                </a>
-
+                    <p>Build a consistent preparation schedule.</p>
+                    <a href="#exams">Get started →</a>
+                </article>
             </div>
         </section>
 
-
-        <!-- CTA -->
+        <!-- Call to action -->
         <section class="cta-section" id="about">
-            <div class="cta-content">
-                <span class="section-eyebrow">YOUR GOAL. YOUR JOURNEY.</span>
-                <h2>Every big achievement<br>starts with one step.</h2>
-                <p>
-                    Choose your examination and start building
-                    your preparation journey today.
-                </p>
-                <a href="#exams" class="cta-button">
-                    Find your exam <span>→</span>
-                </a>
-            </div>
+            <span class="eyebrow">YOUR GOAL. YOUR JOURNEY.</span>
+            <h2>Every achievement starts with one step.</h2>
+            <p>Choose your examination and start preparing today.</p>
+            <a href="#jee-pyq" class="primary-button">
+                Start with JEE PYQ →
+            </a>
         </section>
-
     </main>
 
-
-    <!-- Footer -->
     <footer class="footer">
         <a href="#home" class="logo">prep<span>space.</span></a>
-
         <p>A dedicated space for ambitious learners.</p>
-
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#exams">Examinations</a>
-            <a href="#resources">Resources</a>
-        </div>
-
-        <div class="footer-bottom">
-            © 2026 PrepSpace. Built for learners.
-        </div>
+        <p>© 2026 PrepSpace. Built for learners.</p>
     </footer>
 
+    <!-- Supabase scripts: keep this order -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
 
-    <!-- Search and category filters -->
+    <!-- Search and filters -->
     <script>
         const searchInput = document.getElementById("examSearch");
         const filterButtons = document.querySelectorAll(".filter-button");
-        const quickCategories = document.querySelectorAll(".quick-category");
         const examCards = document.querySelectorAll(".exam-card");
         const noResults = document.getElementById("noResults");
 
         let activeFilter = "all";
 
         function filterExams() {
-            const query = searchInput.value.toLowerCase().trim();
+            const searchTerm = searchInput.value.toLowerCase().trim();
             let visibleCount = 0;
 
             examCards.forEach(card => {
-                const category = card.dataset.category;
-                const searchableText = card.innerText.toLowerCase();
+                const matchesSearch =
+                    card.innerText.toLowerCase().includes(searchTerm);
 
-                const matchesSearch = searchableText.includes(query);
                 const matchesCategory =
-                    activeFilter === "all" || category === activeFilter;
+                    activeFilter === "all" ||
+                    card.dataset.category === activeFilter;
 
                 const visible = matchesSearch && matchesCategory;
-
                 card.hidden = !visible;
 
                 if (visible) visibleCount++;
@@ -468,41 +295,43 @@
             noResults.hidden = visibleCount > 0;
         }
 
-        function setFilter(filter) {
-            activeFilter = filter;
-
-            filterButtons.forEach(button => {
-                button.classList.toggle(
-                    "active",
-                    button.dataset.filter === filter
-                );
-            });
-
-            filterExams();
-
-            document.getElementById("exams").scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
-
         filterButtons.forEach(button => {
             button.addEventListener("click", () => {
-                setFilter(button.dataset.filter);
-            });
-        });
+                activeFilter = button.dataset.filter;
 
-        quickCategories.forEach(category => {
-            category.addEventListener("click", event => {
-                event.preventDefault();
-                setFilter(category.dataset.category);
+                filterButtons.forEach(item => {
+                    item.classList.toggle(
+                        "active",
+                        item === button
+                    );
+                });
+
+                filterExams();
             });
         });
 
         searchInput.addEventListener("input", filterExams);
+
+        document
+            .getElementById("viewPyqButton")
+            .addEventListener("click", async () => {
+                const button = document.getElementById("viewPyqButton");
+                const status = document.getElementById("paperStatus");
+
+                button.disabled = true;
+                status.textContent = "Preparing your PDF...";
+
+                try {
+                    await window.openPaper("pyq.pdf");
+                    status.textContent = "PDF opening requested.";
+                } catch (error) {
+                    console.error(error);
+                    status.textContent =
+                        "Could not open the PDF. Check the console and Supabase configuration.";
+                } finally {
+                    button.disabled = false;
+                }
+            });
     </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
