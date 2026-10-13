@@ -37,6 +37,7 @@ async function findPapers(exam, year = "", subject = "") {
 
 // Open the PDF stored in Supabase Storage.
 window.openPaper = async function (filePath) {
+    const client = window.supabaseClient;
     if (!client) {
         throw new Error("Supabase is not configured.");
     }
@@ -52,7 +53,8 @@ window.openPaper = async function (filePath) {
         );
         throw error;
     }
-
+    window.open(data.signedUrl, "_blank");
+    
     const pdfUrl = data.signedUrl;
 
     // Open the signed PDF URL.
