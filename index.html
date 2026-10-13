@@ -320,12 +320,19 @@
 
                 button.disabled = true;
                 status.textContent = "Preparing your PDF...";
+                const pdfWindow = window.open("about:blank", "_blank");
 
                 try {
-                    await window.openPaper("pyq.pdf");
+                    await window.openPaper(
+                        window.SUPABASE_PAPER_PATH || "pyq.pdf",
+                        pdfWindow
+                    );
                     status.textContent = "PDF opening requested.";
                 } catch (error) {
                     console.error(error);
+                    if (pdfWindow && !pdfWindow.closed) {
+                        pdfWindow.close();
+                    }
                     const message =
                         error instanceof Error ? error.message : String(error);
                     status.textContent = `Could not open PDF: ${message}`;
