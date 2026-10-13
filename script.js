@@ -1,56 +1,101 @@
 
-const SUPABASE_URL = "sb_publishable_Bsnk56oVb6EVLg7ASkJsPg_eezLIjTB";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndseXNoZXR2eHhoaGFlYXh6dHp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4Nzc3NjMsImV4cCI6MjEwNzQ1Mzc2M30.g8jQedW9scgPJ0fkvbFJ6be0REscK0G2GGVZ57bR3w4";
+/* =========================================
+   PrepSpace - Supabase Database & Storage
+   ========================================= */
 
-const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+// The Supabase client is initialized in
+// supabase-config.js, which loads before this file.
+
+if (!window.supabaseClient) {
+    console.error(
+        "Supabase client not found. Check supabase-config.js."
+    );
+}
+
+const client = window.supabaseClient;
+
+
+/* =========================================
+   Search Question Papers
+   ========================================= */
 
 async function findPapers(exam, year = "", subject = "") {
-    let query = client
-        .from("question_papers")
-        .select("*")
-        .eq("exam_name", exam)
-        .order("exam_year", { ascending: false });
+    try {
+        let query = client
+            .from("question_papers")
+            .select("*")
+            .eq("exam_name", exam)
+            .order("exam_year", { ascending: false });
 
-    if (year) {
-        query = query.eq("exam_year", Number(year));
-    }
+        if (year) {
+            query = query.eq("exam_year", Number(year));
+        }
 
-    if (subject) {
-        query = query.ilike("subject", subject);
-    }
+        if (subject) {
+            query = query.ilike("subject", subject);
+        }
 
-    const { data, error } = await query;
+        const { data, error } = await query;
 
-    if (error) {
+        if (error) {
+            throw error;
+        }
+
+        console.log("Question papers found:", data);
+        return data;
+
+    } catch (error) {
         console.error("Database error:", error.message);
-        throw error;
+        return [];
     }
-
-    return data;
 }
+
+
+/* =========================================
+   Open a Question Paper PDF
+   ========================================= */
 
 async function openPaper(filePath) {
-    const { data, error } = await client.storage
-        .from("question-papers")
-        .createSignedUrl(filePath, 300);
+    try {
+        const { data, error } = await client.storage
+            .from("question-papers")
+            .createSignedUrl(filePath, 300);
 
-    if (error) {
+        if (error) {
+            throw error;
+        }
+
+        window.open(
+            data.signedUrl,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    } catch (error) {
         console.error("Storage error:", error.message);
-        alert("Could not open the paper. Check its file path and Storage permissions.");
-        return;
-    }
 
-    window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+        alert(
+            "Could not open the paper. Please check the file path and Storage permissions."
+        );
+    }
 }
 
 
-findPapers("JEE Main", 2025, "Physics")
-    .then(papers => {
-        console.log("Papers found:", papers);
-    })
-    .catch(error => {
-        console.error("Test failed:", error);
-    });
+/* =========================================
+   Temporary Connection Test
+   Remove after testing if not needed.
+   ========================================= */
+
+async function testSupabaseConnection() {
+    const papers = await findPapers(
+        "JEE Main",
+        2025,
+        "Physics"
+    );
+
+    console.log("PrepSpace connection test:", papers);
+}
+
+// Run the test
+testSupabaseConnection();
+openPaper("pyq.pdf");
