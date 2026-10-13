@@ -326,8 +326,9 @@
                     status.textContent = "PDF opening requested.";
                 } catch (error) {
                     console.error(error);
-                    status.textContent =
-                        "Could not open the PDF. Check the console and Supabase configuration.";
+                    const message =
+                        error instanceof Error ? error.message : String(error);
+                    status.textContent = `Could not open PDF: ${message}`;
                 } finally {
                     button.disabled = false;
                 }
