@@ -1,13 +1,205 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PYQ Hub | Previous Year Questions</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>this is a new repo.</p>
-    <p>this is for a new branch</p>
+
+    <header class="navbar">
+        <div class="logo">PYQ<span>Hub</span></div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#subjects">Subjects</a>
+            <a href="#papers">Question Papers</a>
+        </nav>
+
+        <a href="#papers" class="nav-btn">Explore PYQs</a>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">YOUR EXAM PREPARATION PARTNER</p>
+
+            <h1>Prepare Smarter.<br>
+                <span>Score Better.</span>
+            </h1>
+
+            <p class="hero-text">
+                Access previous year question papers, practice important
+                questions, and prepare for your exams with confidence.
+            </p>
+
+            <a href="#papers" class="primary-btn">
+                Explore Question Papers →
+            </a>
+
+            <div class="stats">
+                <div>
+                    <h3>100+</h3>
+                    <p>Question Papers</p>
+                </div>
+                <div>
+                    <h3>20+</h3>
+                    <p>Subjects</p>
+                </div>
+                <div>
+                    <h3>Free</h3>
+                    <p>For Students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subjects" id="subjects">
+        <div class="section-heading">
+            <p class="tagline">FIND YOUR SUBJECT</p>
+            <h2>Explore by Subject</h2>
+            <p>Choose a subject and start preparing.</p>
+        </div>
+
+        <div class="subject-grid">
+            <a href="#papers" class="subject-card">
+                <div class="subject-icon">📐</div>
+                <h3>Mathematics</h3>
+                <p>Practice numerical problems</p>
+            </a>
+
+            <a href="#papers" class="subject-card">
+                <div class="subject-icon">💻</div>
+                <h3>Computer Science</h3>
+                <p>Programming and theory</p>
+            </a>
+
+            <a href="#papers" class="subject-card">
+                <div class="subject-icon">⚗️</div>
+                <h3>Chemistry</h3>
+                <p>Concepts and numericals</p>
+            </a>
+
+            <a href="#papers" class="subject-card">
+                <div class="subject-icon">⚡</div>
+                <h3>Physics</h3>
+                <p>Formulas and applications</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="papers" id="papers">
+        <div class="section-heading">
+            <p class="tagline">PRACTICE AND IMPROVE</p>
+            <h2>Previous Year Papers</h2>
+            <p>Find papers by subject, exam, or year.</p>
+        </div>
+
+        <div class="search-box">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search subjects or question papers..."
+                aria-label="Search question papers"
+            >
+            <select id="yearFilter" aria-label="Filter by year">
+                <option value="">All Years</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+            </select>
+        </div>
+
+        <div class="paper-grid" id="paperGrid">
+
+            <article class="paper-card" data-subject="mathematics" data-year="2025">
+                <span class="paper-label">QUESTION PAPER</span>
+                <h3>Engineering Mathematics</h3>
+                <p>Semester 1 · Mathematics</p>
+                <div class="paper-meta">
+                    <span>📅 2025</span>
+                    <span>📄 PDF</span>
+                </div>
+                <a href="#" class="download-btn">View Paper →</a>
+            </article>
+
+            <article class="paper-card" data-subject="computer science" data-year="2024">
+                <span class="paper-label">QUESTION PAPER</span>
+                <h3>Data Structures</h3>
+                <p>Semester 3 · Computer Science</p>
+                <div class="paper-meta">
+                    <span>📅 2024</span>
+                    <span>📄 PDF</span>
+                </div>
+                <a href="#" class="download-btn">View Paper →</a>
+            </article>
+
+            <article class="paper-card" data-subject="chemistry" data-year="2023">
+                <span class="paper-label">QUESTION PAPER</span>
+                <h3>Engineering Chemistry</h3>
+                <p>Semester 1 · Chemistry</p>
+                <div class="paper-meta">
+                    <span>📅 2023</span>
+                    <span>📄 PDF</span>
+                </div>
+                <a href="#" class="download-btn">View Paper →</a>
+            </article>
+
+            <article class="paper-card" data-subject="physics" data-year="2025">
+                <span class="paper-label">QUESTION PAPER</span>
+                <h3>Engineering Physics</h3>
+                <p>Semester 1 · Physics</p>
+                <div class="paper-meta">
+                    <span>📅 2025</span>
+                    <span>📄 PDF</span>
+                </div>
+                <a href="#" class="download-btn">View Paper →</a>
+            </article>
+
+        </div>
+
+        <p id="noResults" hidden>No question papers found. Try another search.</p>
+    </section>
+
+    <footer>
+        <div class="logo">PYQ<span>Hub</span></div>
+        <p>Helping students prepare better, one paper at a time.</p>
+        <p class="copyright">© 2026 PYQ Hub. Built for students.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const yearFilter = document.getElementById("yearFilter");
+        const papers = document.querySelectorAll(".paper-card");
+        const noResults = document.getElementById("noResults");
+
+        function filterPapers() {
+            const query = searchInput.value.toLowerCase().trim();
+            const year = yearFilter.value;
+            let visibleCount = 0;
+
+            papers.forEach(paper => {
+                const text = paper.innerText.toLowerCase();
+                const subject = paper.dataset.subject;
+                const paperYear = paper.dataset.year;
+
+                const matchesSearch =
+                    text.includes(query) || subject.includes(query);
+                const matchesYear = !year || paperYear === year;
+
+                const show = matchesSearch && matchesYear;
+                paper.hidden = !show;
+
+                if (show) visibleCount++;
+            });
+
+            noResults.hidden = visibleCount > 0;
+        }
+
+        searchInput.addEventListener("input", filterPapers);
+        yearFilter.addEventListener("change", filterPapers);
+    </script>
+
 </body>
 </html>
