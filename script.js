@@ -1,4 +1,3 @@
-
 const client = window.supabaseClient;
 
 if (!client) {
@@ -7,11 +6,11 @@ if (!client) {
     );
 }
 
-// Optional: retrieve papers from a question_papers database table.
 async function findPapers(exam, year = "", subject = "") {
-    if (!client) return [];
+    const activeClient = window.supabaseClient;
+    if (!activeClient) return [];
 
-    let query = client
+    let query = activeClient
         .from("question_papers")
         .select("*")
         .eq("exam_name", exam)
@@ -35,14 +34,17 @@ async function findPapers(exam, year = "", subject = "") {
     return data || [];
 }
 
-// Open the PDF stored in Supabase Storage.
 window.openPaper = async function (filePath) {
-    const client = window.supabaseClient;
-    if (!client) {
+    const activeClient = window.supabaseClient;
+    if (!activeClient) {
         throw new Error("Supabase is not configured.");
     }
 
-    const { data, error } = await client.storage
+    if (!filePath) {
+        throw new Error("No file path was provided for the PDF.");
+    }
+
+    const { data, error } = await activeClient.storage
         .from("question-papers")
         .createSignedUrl(filePath, 300);
 
@@ -53,23 +55,21 @@ window.openPaper = async function (filePath) {
         );
         throw error;
     }
-    window.open(data.signedUrl, "_blank");
-    
-    const pdfUrl = data.signedUrl;
 
-    // Open the signed PDF URL.
-    const newWindow = window.open(
-        pdfUrl,
-        "_blank",
-        "noopener,noreferrer"
-    );
+    const pdfUrl = data?.signedUrl;
+    if (!pdfUrl) {
+        throw new Error("Supabase did not return a signed PDF URL.");
+    }
 
-    // Fallback if the browser blocks the new window.
+    const newWindow = window.open(pdfUrl, "_blank", "noopener,noreferrer");
+
     if (!newWindow) {
         window.location.href = pdfUrl;
     }
+
+    return pdfUrl;
 };
 
 // Test from the browser console if needed:
 // findPapers("JEE Main", 2025, "Physics");
-// openPaper("pyq.pdf");
+// window.openPaper("pyq.pdf");
